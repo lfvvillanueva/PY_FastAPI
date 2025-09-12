@@ -1,0 +1,17 @@
+# Entornos virtuales
+.venv/
+venv/
+env/
+
+# Archivos de dependencias locales
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+
+# Configuración de IDEs
+.vscode/
+.idea/
+
+# Archivos temporales
+.DS_Store
