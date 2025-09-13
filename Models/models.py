@@ -1,12 +1,21 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, EmailStr
 from datetime import datetime
+from sqlmodel import SQLModel, Field
 
-class Customer(BaseModel):
-    id: str
+#https://docs.pydantic.dev/latest//usage/models/
+
+class CustomerBase(SQLModel):
     name: str
     description: str | None = None
     email: str
     age: int
+    email: EmailStr # Email validation
+
+class CustomerCreate(CustomerBase):
+    pass
+
+class Customer(CustomerBase, table=True):
+    id: int | None = Field(default=None, primary_key=True)  
 
 class Transaction(BaseModel):
     id: str
@@ -17,7 +26,7 @@ class Transaction(BaseModel):
 
 class Invoice(BaseModel):
     id: int
-    customer: Customer
+    customer: CustomerBase
     transactions: list[Transaction]
     total: int = 0
 
