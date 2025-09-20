@@ -18,3 +18,5 @@ __pycache__/
 
 # Base de datos SQLite
 database.sqlite3
+db.sqlite3
+
